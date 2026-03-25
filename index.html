@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>RC Car Controller</title>
+
+    <!-- NippleJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.10.1/nipplejs.min.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+        background: #111;
+        color: white;
+        font-family: Arial;
+        text-align: center;
+      }
+
+      #connectBtn {
+        margin: 20px;
+        padding: 15px 30px;
+        font-size: 18px;
+        border-radius: 10px;
+        border: none;
+      }
+
+      #joystick {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        margin: 40px auto;
+        background: #222;
+        border-radius: 50%;
+        overflow: hidden; /* helps visually */
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <h1>RC Controller</h1>
+    <button id="connectBtn">Connect</button>
+    <div id="status">Disconnected</div>
+    <div id="errorLbl"></div>
+
+    <div id="joystick"></div>
+
+    <script>
+      let characteristic;
+      let lastSend = 0;
+      let device = null;
+
+      const statusText = document.getElementById("status");
+      const errorText = document.getElementById("errorLbl")
+
+      // CUSTOM UUIDs 
+      const SERVICE_UUID = "12345678-1234-1234-1234-123456789abc";
+      const CHAR_UUID    = "abcdef01-1234-1234-1234-123456789abc";
+
+      // ================= BLE CONNECT =================
+      errorText.onclick = async () => {
+        errorText.innerText = "";
+      }
+
+      document.getElementById("connectBtn").onclick = async () => {
+        try {
+
+          if (device) {
+            console.log("Forcing disconnect...");
+            device.gatt.disconnect();
+
+            // give BLE time to reset
+            await new Promise(resolve => setTimeout(resolve, 3000));
+
+            device = null;
+            characteristic = null;
+          }
+
+          device = await navigator.bluetooth.requestDevice({
+            filters: [{ namePrefix: "RC-Car" }],
+            optionalServices: [SERVICE_UUID]
+          });
+        
+          const server = await device.gatt.connect();
+          const service = await server.getPrimaryService(SERVICE_UUID);
+          characteristic = await service.getCharacteristic(CHAR_UUID);
+          
+          statusText.innerText = "Connected";
+          errorText.innerText = "";
+          console.log("Connected");
+        } catch (err) {
+          console.error(err);
+          errorText.innerText = err;
+          statusText.innerText = "Error occured. Please wait and try again in a moment"
+          await new Promise(resolve => setTimeout(resolve, 3000));
+          //location.reload();
+        }
+      };
+
+      // ================= JOYSTICK =================
+      const manager = nipplejs.create({
+        zone: document.getElementById('joystick'),
+        mode: 'static',
+        position: { left: '50%', top: '50%' },
+        color: 'white',
+        size: 200
+      });
+
+      // Deadzone
+      function applyDeadzone(v) {
+        return Math.abs(v) < 0.1 ? 0 : v;
+      }
+
+      // Send data
+      let sending = false;
+
+      async function jsSend(x, y) {
+        send("js" + Math.round((x + 1) * 127.5).toString() + "," + (255-Math.round((y + 1) * 127.5)).toString());
+        return;
+      }
+
+      async function send(dataToSend) {
+        if (!characteristic || sending) return;
+      
+        let now = Date.now();
+        if (now - lastSend < 50) return;
+      
+        lastSend = now;
+        sending = true;
+      
+        try {
+          const text = dataToSend;
+          const encoder = new TextEncoder();
+          const data = encoder.encode(text);
+
+          await characteristic.writeValue(data);
+        } catch (err) {
+          console.error(err);
+        }
+      
+        sending = false;
+      }
+
+      // Move event
+      manager.on('move', function (evt, data) {
+        if (!data.vector) return;
+      
+        let x = applyDeadzone(data.vector.x);
+        let y = applyDeadzone(-data.vector.y); // invert Y
+      
+        jsSend(x,y);
+      });
+
+      manager.on('end', function () {
+        send(0, 0);
+      });
+    </script>
+
+  </body>
+</html>
