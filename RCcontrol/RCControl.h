@@ -1,5 +1,5 @@
-#ifndef "RCControl_h"
-#define "RCControl_h"
+#ifndef RCControl_h
+#define RCControl_h
 
 #include "Arduino.h"
 #include <ArduinoBLE.h>
