@@ -68,6 +68,10 @@ void RCControl::StartLoop() {
             JoyStickX = (splitData[0].toFloat()) / 128 - 1;
             JoyStickY = (splitData[1].toFloat()) / 128 - 1;
         }
+        else if (data.startsWith("sl,")) {
+            data = data.substring(3);
+            slider = data.toFloat() / 255;
+        }
         else {
             Enqueue(data);
         }
