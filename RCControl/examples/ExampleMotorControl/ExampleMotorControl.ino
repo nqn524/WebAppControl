@@ -14,18 +14,13 @@ PwmOut     leftMotorPwm(P0_27);
 DigitalOut rightMotorDir(P0_5);
 PwmOut     rightMotorPwm(P1_2);
 
-InterruptIn leftEncoder(P1_11);
-InterruptIn rightEncoder(P1_12);
+//InterruptIn leftEncoder(P1_11);
+//InterruptIn rightEncoder(P1_12);
 
-volatile int leftEncoderCount = 0;
-volatile int rightEncoderCount = 0;
+//volatile int leftEncoderCount = 0;
+//volatile int rightEncoderCount = 0;
 
 /////////////////////////////////////////////////////////////
-
-
-
-float speedLeft = 0;
-float speedRight = 0;
 
 void setup() {
 
@@ -36,8 +31,8 @@ void setup() {
   stopMotors();
 
   // Encoder interrupts
-  leftEncoder.rise(&onLeftEncoderRise);
-  rightEncoder.rise(&onRightEncoderRise);
+  //leftEncoder.rise(&onLeftEncoderRise);
+  //rightEncoder.rise(&onRightEncoderRise);
   
 
   Serial.begin(115200);
@@ -59,10 +54,10 @@ void loop() {
     while (RCC.Connected()) {
 
       if (RCC.JoystickUpdated) {
-        speedLeft = RCC.JoyStickY + RCC.JoyStickX;
-        speedRight = RCC.JoyStickY - RCC.JoyStickX;
+        float speedLeft = (RCC.JoyStickY + RCC.JoyStickX) * RCC.slider;
+        float speedRight = (RCC.JoyStickY - RCC.JoyStickX) * RCC.slider;
 
-        updateMotors();
+        updateMotors(speedLeft, speedRight);
 
         Serial.println(String(RCC.JoyStickX) + "   " + String(RCC.JoyStickY) + "   " + String(speedLeft) + "   " + String(speedRight));
       }
@@ -82,7 +77,7 @@ void stopMotors() {
   rightMotorPwm.write(0.0);
 }
 
-void updateMotors() {
+void updateMotors(float speedLeft, float speedRight) {
 
   if (speedLeft > 0) {
     leftMotorDir = 1;
@@ -102,10 +97,10 @@ void updateMotors() {
   rightMotorPwm.write(abs(speedRight));
 }
 
-void onLeftEncoderRise() {
-  leftEncoderCount++;
-}
-
-void onRightEncoderRise() {
-  rightEncoderCount++;
-}
+//void onLeftEncoderRise() {
+//  leftEncoderCount++;
+//}
+//
+//void onRightEncoderRise() {
+//  rightEncoderCount++;
+//}

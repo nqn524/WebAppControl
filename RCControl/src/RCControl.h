@@ -13,6 +13,8 @@ public:
 	float JoyStickX;
 	float JoyStickY;
 
+	float slider;
+
 	bool GetCentral();
 	bool Connected();
 
