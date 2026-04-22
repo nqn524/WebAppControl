@@ -69,6 +69,7 @@ void RCControl::StartLoop() {
             JoyStickY = (splitData[1].toFloat()) / 128 - 1;
         }
         else if (data.startsWith("sl,")) {
+            JoystickUpdated = true;
             data = data.substring(3);
             slider = data.toFloat() / 255;
         }
