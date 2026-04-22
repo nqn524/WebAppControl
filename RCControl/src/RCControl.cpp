@@ -17,6 +17,8 @@ void RCControl::Begin() {
     BLE.addService(_serv);
 
     BLE.advertise();
+
+    slider = 128;
 }
 
 bool RCControl::GetCentral() {
