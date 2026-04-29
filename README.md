@@ -1,4 +1,3 @@
-
 # Robot Competition Controller
 
 This is a custom made library and wireless controller accessible through a browser, designed to be compatable for every team in the Univerty of York Robot Competition. This will only work on the Arduino Nano 33 BLE sense that every team has been provided. If you stumbled upon this repo and you're not part of the UoY then you're unlikekly to find use out of this controller.  
@@ -29,3 +28,7 @@ The controller is accessible from this link https://www-users.york.ac.uk/~nqn524
 `File > Examples > RobotCompControl > ExampleMotorControl`  
 Assuming everything is installed correctly this should work immedietly when you upload to your Arduino
  - Alternatively you can access it from the Github [here](RCControl/examples/ExampleMotorControl/ExampleMotorControl.ino)
+
+# Author and Maintainer
+
+The Author and Maintainer of this Github, the RCContol library and the website is Karl Smirthwaite, if you need to contact me for any reason, please email me at nqn524@york.ac.uk
