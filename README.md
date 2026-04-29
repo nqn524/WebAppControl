@@ -28,4 +28,4 @@ The controller is accessible from this link https://www-users.york.ac.uk/~nqn524
  - There is an example that you can access through the Arduino IDE, open it by going:  
 `File > Examples > RobotCompControl > ExampleMotorControl`  
 Assuming everything is installed correctly this should work immedietly when you upload to your Arduino
- - Alternatively you can access it from the Github [here](blob/main/RCControl/examples/ExampleMotorControl/ExampleMotorControl.ino)
+ - Alternatively you can access it from the Github [here](RCControl/examples/ExampleMotorControl/ExampleMotorControl.ino)
