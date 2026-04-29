@@ -4,6 +4,9 @@ This is a custom made library and wireless controller accessible through a brows
   
 The controller is accessible from this link https://www-users.york.ac.uk/~nqn524
 
+# Disclaimer
+The webapp is not compatable with IOS devices due to Apple's higher security concerns, limiting websites from accessing Bluetooth devices
+
 # How to install the library
 
 1. Download and install the [Arduino IDE](https://www.arduino.cc/en/software/)
@@ -28,6 +31,15 @@ The controller is accessible from this link https://www-users.york.ac.uk/~nqn524
 `File > Examples > RobotCompControl > ExampleMotorControl`  
 Assuming everything is installed correctly this should work immedietly when you upload to your Arduino
  - Alternatively you can access it from the Github [here](RCControl/examples/ExampleMotorControl/ExampleMotorControl.ino)
+7. `Example` in the following line is the broadcasted name of the Arduino. Change this to something reasonable like your team name or something similar  
+`RCControl RCC("12345678-1234-1234-1234-123456789abc", "abcdef01-1234-1234-1234-123456789abc", "Example");`
+
+# How to use website
+
+1. Connect your Arduino to power
+2. Ensure Bluetooth is enabled on your device
+3. On the website press connect. A small window will appear, when your Arduino shows up in the list select it and connect to it.
+4. After a moment the website should show the connection successful, move the joystick around and it should start moving the motors.
 
 # Author and Maintainer
 
