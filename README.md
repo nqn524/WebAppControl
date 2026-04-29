@@ -41,6 +41,11 @@ Assuming everything is installed correctly this should work immedietly when you 
 3. On the website press connect. A small window will appear, when your Arduino shows up in the list select it and connect to it.
 4. After a moment the website should show the connection successful, move the joystick around and it should start moving the motors.
 
+# Making changes to the website
+
+If you wish to add more features to the website such as a button that sends a string to the arduino, or a slider to adjust speed, then I recomend you pursue this. To make changes you will have to navigate to the website and press `Ctrl+S` this will download the html file of the web app to your device, open the html file in your editor of choice and make your changes.  
+Please be aware that if you do this then any changes that I make to the website will obviously not carry over to your website.
+
 # Author and Maintainer
 
 The Author and Maintainer of this Github, the RCContol library and the website is Karl Smirthwaite, if you need to contact me for any reason, please email me at nqn524@york.ac.uk
