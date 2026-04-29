@@ -43,7 +43,8 @@ Assuming everything is installed correctly this should work immedietly when you 
 
 # Making changes to the website
 
-If you wish to add more features to the website such as a button that sends a string to the arduino, or a slider to adjust speed, then I recomend you pursue this. To make changes you will have to navigate to the website and press `Ctrl+S` this will download the html file of the web app to your device, open the html file in your editor of choice and make your changes.  
+If you wish to add more features to the website such as a button that sends a string to the arduino, or a slider to adjust speed, then I encourage you pursue this.  
+To make changes you will have to navigate to the website and press `Ctrl+S` this will download the html file of the web app to your device, open the html file in your editor of choice and make your changes.  
 Please be aware that if you do this then any changes that I make to the website will obviously not carry over to your website.
 
 # Author and Maintainer
