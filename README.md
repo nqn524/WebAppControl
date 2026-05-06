@@ -31,15 +31,21 @@ The webapp is not compatable with IOS devices due to Apple's higher security con
 `File > Examples > RobotCompControl > ExampleMotorControl`  
 Assuming everything is installed correctly this should work immedietly when you upload to your Arduino
  - Alternatively you can access it from the Github [here](RCControl/examples/ExampleMotorControl/ExampleMotorControl.ino)
-7. `Example` in the following line is the broadcasted name of the Arduino. Change this to something reasonable like your team name or something similar  
-`RCControl RCC("12345678-1234-1234-1234-123456789abc", "abcdef01-1234-1234-1234-123456789abc", "Example");`
+7. On line 7 in the example you will see the following code:  
+`RCControl RCC("12345678-1234-1234-1234-123456789abc", "abcdef01-1234-1234-1234-123456789abc", "Example");`  
+You will need to change a few of the arguments:  
+ - `12345678-1234-1234-1234-123456789abc` represents the Service UUID, using this [UUID generator](https://www.uuidgenerator.net) generate and replace the template UUID (Keep hold of this UUID, you will need it on the website when you come to connecting to the Arduino)
+ - `abcdef01-1234-1234-1234-123456789abc` represents the Characteristic UUID, using this [UUID generator](https://www.uuidgenerator.net) generate and replace the template UUID (Keep hold of this UUID, you will need it on the website when you come to connecting to the Arduino)  
+ **NOTE: The Service UUID and Characteristic UUID MUST be different**
+ - `Example` represents the name of the Arduino when broadcasting, change this to something like your team name or something similar to seperate it from other teams robots
 
 # How to use website
 
 1. Connect your Arduino to power
 2. Ensure Bluetooth is enabled on your device
-3. On the website press connect. A small window will appear, when your Arduino shows up in the list select it and connect to it.
-4. After a moment the website should show the connection successful, move the joystick around and it should start moving the motors.
+3. On the website, press `Settings` and configure the UUIDs to match the UUIDs on the Arduino
+4. Then press `Connect` A small window will appear, when your Arduino shows up in the list select it and connect to it.
+5. After a moment the website should show the connection successful, move the joystick around and it should start moving the motors.
 
 # Making changes to the website
 
