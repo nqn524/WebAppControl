@@ -15,7 +15,7 @@ The webapp is not compatable with IOS devices due to Apple's higher security con
 3. Downlaod and extract the zip file from the Github's [releases](releases) page
 4. Copy the `RCContol` folder into `Documents > Arduino > libraries`. The file structre should look like the following:  
 
-```bash
+```
 └── Arduino/  
   └── libraries/  
     ├── Arduino_SpiNINA/
