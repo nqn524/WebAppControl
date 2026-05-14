@@ -59,7 +59,7 @@ If you wish to add more features to the website such as a button that sends a st
 To make changes you will have to navigate to the website and press `Ctrl+S` this will download the html file of the web app to your device, open the html file in your editor of choice and make your changes.  
 Please be aware that if you do this then any changes that I make to the website will obviously not carry over to your website.  
 
-  If you wish to send string messages to the arduino then you can do so, on the back end of the website there is a function called 'send' (creative name I know) that is able to send any string to the connected BLE device. To be able to read this sent data on the Arduino, the library has a queue data structre built in and any recieved data that is not the joystick will be placed on this queue. The queue has a max size of 16, after more than 16 strings have been recieved new ones will be discarded. The following block of code can be found in the example and shows how you are able to access this queue.
+  If you wish to send string messages to the arduino then you can do so, on the back end of the website there is a function called 'send' (creative name I know) that is able to send any string to the connected BLE device. To be able to read this sent data on the Arduino, the library has a circuilar queue built in and any recieved data that is not the joystick will be placed on this queue. The queue has a max size of 16, after more than 16 strings have been recieved new ones will be discarded. The following block of code can be found in the example and shows how you are able to access this queue.
 ```cpp
 if (!RCC.Empty()) {
   String data = RCC.Dequeue();
