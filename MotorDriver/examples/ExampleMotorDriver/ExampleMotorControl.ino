@@ -27,8 +27,8 @@ void loop() {
     while (RCC.Connected()) {
 
       if (RCC.JoystickUpdated) {
-        float speedLeft = RCC.JoyStickY + RCC.JoyStickX;
-        float speedRight = RCC.JoyStickY - RCC.JoyStickX;
+        float speedLeft = (RCC.JoyStickY + RCC.JoyStickX) * RCC.slider;
+        float speedRight = (RCC.JoyStickY - RCC.JoyStickX) * RCC.slider;
 
         driver.UpdateMotors(speedLeft, speedRight);
 
