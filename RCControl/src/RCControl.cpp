@@ -36,6 +36,7 @@ bool RCControl::Connected() {
 
 void RCControl::StartLoop() {
     JoystickUpdated = false;
+    BLE.poll();
 
 	if (_char.written() && _char.valueLength() >= 1) {
         int length = _char.valueLength();
