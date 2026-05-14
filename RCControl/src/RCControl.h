@@ -21,6 +21,7 @@ public:
 	bool JoystickUpdated;
 
 	String Dequeue();
+	bool Enqueue(String data);
 	bool Full();
 	bool Empty();
 private:
@@ -36,7 +37,6 @@ private:
 	int _frontPointer;
 	int _backPointer;
 	String _Queue[16];
-	bool Enqueue(String data);
 };
 
 #endif
