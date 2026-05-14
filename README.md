@@ -1,6 +1,6 @@
 # Robot Competition Controller
 
-This is a custom made library and wireless controller accessible through a browser, designed to be compatable for every team in the Univerty of York Robot Competition. This will only work on the Arduino Nano 33 BLE sense that every team has been provided. If you stumbled upon this repo and you're not part of the UoY then you're unlikekly to find use out of this controller.  
+This is a custom made library and wireless controller accessible through a browser, designed to be compatable for every team in the Univerty of York Robot Competition. This will only work on the Arduino Nano 33 BLE sense Rev2 that every team has been provided. If you stumbled upon this repo and you're not part of the UoY then you're unlikekly to find use out of this controller.  
   
 The controller is accessible from this link https://www-users.york.ac.uk/~nqn524
 
@@ -15,15 +15,17 @@ The webapp is not compatable with IOS devices due to Apple's higher security con
 3. Downlaod and extract the zip file from the Github's [releases](releases) page
 4. Copy the `RCContol` folder into `Documents > Arduino > libraries`. The file structre should look like the following:  
 
+```bash
 └── Arduino/  
-│    └── libraries/  
-│    │    ├── Arduino_SpiNINA/  
-│    │    ├── ArduinoBLE/  
-│    │    └── RCControl/  
-│    │    │    ├── examples/  
-│    │    │    ├── src/  
-│    │    │    ├── Keywords.txt  
-│    │    │    └── library.properties  
+  └── libraries/  
+    ├── Arduino_SpiNINA/
+    ├── ArduinoBLE/  
+    └── RCControl/  
+      ├── examples/  
+      ├── src/  
+      ├── Keywords.txt  
+      └── library.properties
+```
 
 5. You will now want to restart the Arduino IDE to allow it to recognise the RCContol library
 6. Everything should now be setup. 
@@ -39,6 +41,10 @@ You will need to change a few of the arguments:
  **NOTE: The Service UUID and Characteristic UUID MUST be different**
  - `Example` represents the name of the Arduino when broadcasting, change this to something like your team name or something similar to seperate it from other teams robots
 
+# Disclaimer when using the IMU
+
+The Arduino that we are using has an on board IMU that allows you to get the boards linear acceleration, angular acceleration and magnetic field strength in all three axis. If you plan on using it then make sure to use the library called `Arduino_BMI270_BMM150` and **NOT** `Arduino_LSM9DS1`. A lot of online documentation (including official Arduino documentation) says to use the wrong library. Thankfully the syntax between the two libraries is identical, the only difference between them is the model of IMU they are compatible with. The IMU on the Arduino Nano 33 BLE sense Rev2 is made up of the 3-axis accelerometer and gyroscope `BMI270`, and the 3-axis magnetometer `BMM150`.
+
 # How to use website
 
 1. Connect your Arduino to power
@@ -51,7 +57,15 @@ You will need to change a few of the arguments:
 
 If you wish to add more features to the website such as a button that sends a string to the arduino, or a slider to adjust speed, then I encourage you pursue this.  
 To make changes you will have to navigate to the website and press `Ctrl+S` this will download the html file of the web app to your device, open the html file in your editor of choice and make your changes.  
-Please be aware that if you do this then any changes that I make to the website will obviously not carry over to your website.
+Please be aware that if you do this then any changes that I make to the website will obviously not carry over to your website.  
+
+  If you wish to send string messages to the arduino then you can do so, on the back end of the website there is a function called 'send' (creative name I know) that is able to send any string to the connected BLE device. To be able to read this sent data on the Arduino, the library has a queue data structre built in and any recieved data that is not the joystick will be placed on this queue. The queue has a max size of 16, after more than 16 strings have been recieved new ones will be discarded. The following block of code can be found in the example and shows how you are able to access this queue.
+```cpp
+if (!RCC.Empty()) {
+  String data = RCC.Dequeue();
+  Serial.println(data);
+}
+```
 
 # Author and Maintainer
 
