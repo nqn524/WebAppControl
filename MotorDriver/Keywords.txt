@@ -1,4 +1,0 @@
-MotorDriver	KEYWORD1
-SetupMotors	KERYWORD2
-StopMotors	KERYWORD2
-UpdateMotors	KEYWORD2
