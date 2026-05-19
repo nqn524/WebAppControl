@@ -5,7 +5,16 @@ This is a custom made library and wireless controller accessible through a brows
 The controller is accessible from this link https://www-users.york.ac.uk/~nqn524
 
 # Disclaimer
-The webapp is not compatable with IOS devices due to Apple's higher security concerns, limiting websites from accessing Bluetooth devices
+The webapp is not compatable with IOS devices due to Apple's higher security concerns, limiting websites from accessing Bluetooth devices.  
+Also note, only a select few browsers have Bluetooth compatibility, see the table below to find out which can and cannot.  
+
+| Chrome | Edge | Firefox | Safari | Opera | Opera<br>mini | Internet<br>explorer | Samsung<br>internet | Brave |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| <img src="https://www-users.york.ac.uk/~nqn524/BrowserIcons/chrome.png" width="40"/> | <img src="https://www-users.york.ac.uk/~nqn524/BrowserIcons/edge.png" width="40"/> | <img src="https://www-users.york.ac.uk/~nqn524/BrowserIcons/firefox.png" width="40"/> | <img src="https://www-users.york.ac.uk/~nqn524/BrowserIcons/safari.png" width="40"/> | <img src="https://www-users.york.ac.uk/~nqn524/BrowserIcons/opera.png" width="40"/> | <img src="https://www-users.york.ac.uk/~nqn524/BrowserIcons/opera_mini.png" width="40"/> | <img src="https://www-users.york.ac.uk/~nqn524/BrowserIcons/ie.png" width="40"/> | <img src="https://www-users.york.ac.uk/~nqn524/BrowserIcons/samsung_internet.png" width="40"/> | <img src="https://www-users.york.ac.uk/~nqn524/BrowserIcons/brave.png" width="40"/> |
+| &#x2705; | &#x2705; | &#x274C; | &#x274C; | &#x2705; | &#x274C; | &#x274C; | &#x2705; | &#x274C; |
+
+**Note: This information is accurate as of 19/05/2026**  
+This information is from [caniuse.com](https://caniuse.com/web-bluetooth)
 
 # How to install the library
 
