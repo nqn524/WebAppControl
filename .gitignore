@@ -1,0 +1,22 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/ProjectSettings.json
+/.vs/slnx.sqlite
+/.vs/slnx.sqlite-journal
+/.vs/VSWorkspaceState.json
+/.vs/WebAppControl/v17/.wsuo
+/.vs/WebAppControl/v17/Browse.VC.db
+/.vs/WebAppControl/v17/Browse.VC.db-shm
+/.vs/WebAppControl/v17/Browse.VC.db-wal
+/.vs/WebAppControl/v17/Browse.VC.opendb
+/.vs/WebAppControl/v17/DocumentLayout.backup.json
+/.vs/WebAppControl/v17/DocumentLayout.json
+*.ipch
+/.vs/WebAppControl/FileContentIndex/1eb7d8e1-698a-4048-b1ac-d47648acde7a.vsidx
+/.vs/WebAppControl/FileContentIndex/2926cf81-0817-4c30-aed7-cb0f7ecff5a4.vsidx
+/.vs/WebAppControl/FileContentIndex/59e13997-0861-4b10-8aaa-87e584814daf.vsidx
+/.vs/WebAppControl/FileContentIndex/66df38ee-3f18-4454-8208-de4b1e834da3.vsidx
+/.vs/WebAppControl/FileContentIndex/72a92b73-9963-4b98-a62e-1c839cc4bd71.vsidx
+/.vs/WebAppControl/FileContentIndex/973ceb0b-5daf-4954-9b0f-e9fa992bad65.vsidx
